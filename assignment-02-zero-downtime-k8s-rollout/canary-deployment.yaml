@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payment-service-canary
+  labels:
+    app: payment-service
+    tier: canary
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: payment-service
+      tier: canary
+  template:
+    metadata:
+      labels:
+        app: payment-service
+        tier: canary
+    spec:
+      containers:
+        - name: payment-api
+          image: ghcr.io/emaanhumayun/payment-service:v2.1.0
+          ports:
+            - containerPort: 8080
+          lifecycle:
+            preStop:
+              exec:
+                command: ["/bin/sh", "-c", "sleep 15"]
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          resources:
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
