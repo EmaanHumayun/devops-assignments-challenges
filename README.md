@@ -8,7 +8,7 @@ A repository of production-oriented architectural assignments, case-study proble
 
 ---
 
-## 📌 Assignments Overview
+##  Assignments Overview
 
 | Assignment | Topic & Domain | Architectural Pattern | Deliverable |
 | :--- | :--- | :--- | :--- |
@@ -19,7 +19,7 @@ A repository of production-oriented architectural assignments, case-study proble
 
 ---
 
-## 🏗️ Assignment 01: High-Availability VPC Architecture
+## ️ Assignment 01: High-Availability VPC Architecture
 
 ```mermaid
 flowchart TD
@@ -40,7 +40,7 @@ flowchart TD
 
 ---
 
-## 👤 Author
+##  Author
 
 **Emaan Humayun**
 - GitHub: [@EmaanHumayun](https://github.com/EmaanHumayun)
